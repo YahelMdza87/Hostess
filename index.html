@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/estilos.css">
+    <title>Hostess</title>
+</head>
+<body>
+    <header id="header_index">
+        <!-- Logo de restaurante -->
+        <!-- <svg id="qr"></svg> -->
+        <img id="logo" src="/imagenes/Logo_pancake.png" alt="" onclick="generarQr()">
+        <!-- Contenedor de slider para que esten del mismo tamaño en altura -->
+        <div id="header_categorias">
+            <!-- Flecha para deslizar hacia la izquierda -->
+            <button id="desplazar_Izquierda" ><img id="btnFlechaIzq" src="/imagenes/flecha.png" alt=""></button>
+            <!-- Categorias -->
+            <table id="categorias_slider">
+                <tr>
+                    <td id="1">Entradas</td>
+                    <td id="2">Desayunos</td>
+                    <td id="3">Pancakes</td>
+                    <td id="4">Comidas</td>
+                    <td id="5">Hamburguesas</td>
+                    <td id="6">Wraps</td>
+                    <td id="7">Kids</td>
+                    <td id="8">Para compartir</td>
+                    <td id="9">Bebidas</td>
+                </tr>
+            </table>
+            <!-- Flecha para deslizar hacia la derecha -->
+            <button id="desplazar_Derecha"><img id="btnFlechaIzq" src="/imagenes/flechaD.png" alt=""></button>
+        </div>
+    </header>
+    <main>
+        <section id="menu">
+            <!-- Aquí se mostrará el menú del restaurante -->
+        </section>
+    </main>
+    <div id="contenedor_footer">
+        <footer id="btn_Carrito" onclick="verCarrito()">
+            <img id="footer_imgcarrito" src="/imagenes/carrito.png" alt="">
+            <h3 id="footer_txt">Ver carrito</h3>
+        </footer>
+    </div>
+    <script src="/scriptIndex.js"></script>
+</body>
+</html>
