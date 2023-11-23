@@ -152,7 +152,7 @@ app.post('/generar_qr', async (req, res) => {
 
 
 
-const PORT = 8080;
+const PORT = 3000;
 app.listen(PORT, '0.0.0.0',() => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
