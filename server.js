@@ -5,6 +5,7 @@ const mysql = require('mysql');
 const axios = require('axios');
 const path = require('path');
 const cors = require("cors");
+
 const app = express();
 const corsOptions = {
     origin: '*',
@@ -72,7 +73,7 @@ app.get('/carrito', (req, res) => {
 });
 
 
-
+//Eliminar un platillo del carrito
 app.delete('/eliminarPlatillo/:idPlatillo', (req, res) => {
     const id_platillo = req.params.idPlatillo;
 
@@ -109,6 +110,23 @@ app.post('/agregarPlatilloCarrito', (req, res) => {
     });
 });
 
+app.post('/agregarPlatilloMesa', (req, res) => {
+    //Recibimos el JSON
+    const datosCarrito = req.body;
+    const agregarCarrito = `INSERT INTO buffmesa SET ?`;
+    connection.query(agregarCarrito, datosCarrito, (error, results, fields) => {
+        if (error) {
+            console.error('Error al insertar en el carrito:', error);
+            res.status(500).send('Error interno del servidor');
+            return;
+        }
+
+        // Enviar una respuesta con los resultados
+        res.json({ mensaje: 'Insertado en el carrito exitosamente', datosCarrito });
+    });
+});
+
+//Actualizar Carrito (eliminar o agregar comentarios)
 app.put('/actualizarPlatillo', (req, res) => {
     const datosCarrito = req.body;
 
@@ -150,6 +168,31 @@ app.post('/generar_qr', async (req, res) => {
     }
 });
 
+
+app.get('/ver_mesas/:area', (req, res) => {
+    const area = req.params.area;
+
+    const mostrarMesas = `SELECT * FROM mydb.mesas WHERE Areas_Id_area = ?`;
+
+    connection.query(mostrarMesas,[area], (error,results,fields) => {
+        if (error) throw error;
+        res.json(results);
+    });
+
+});
+
+app.get('/ver_comanda/:mesa', (req, res) => {
+    const mesa = req.params.mesa;
+    //Hacemos el query para seleccionar los registros de buffCarrito
+    const mostrarPlatillos = `SELECT bcarr.id_bitacoraMesa, bcarr.Productos_Id_producto, prod.Nombre, prod.Precio_producto, bcarr.Mesas_Id_mesas from productos prod 
+    INNER JOIN buffmesa bcarr ON bcarr.Productos_Id_producto = prod.Id_producto WHERE bcarr.Mesas_Id_Mesas = ?`;
+    //Ejecutamos la petición
+    connection.query(mostrarPlatillos, [mesa],(error, results, fields) => {
+        if (error) throw error;
+        //Guardamos los resultados en formato JSON y se lo mandamos scriptInedx.js
+        res.json(results);
+    });
+});
 
 
 const PORT = 3000;

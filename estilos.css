@@ -582,6 +582,28 @@ main {
 
 
 /* TODO LO DE JP */
+
+/* MESAS DE MESERO */
+.mesa_con_numero{
+    width: 80%;
+}
+#contenedor_mesas{
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(33%, auto); 
+
+}
+.mesa_menu_mesero{
+    width: 100%;
+}
+.numero_mesa{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #112149;
+    font-size: 2vh;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Roboto+Slab&family=Rubik&family=Source+Code+Pro:wght@600&display=swap');
 
 #logo {
@@ -728,7 +750,7 @@ body{
 }
 
 
-.sidebar li a{
+.sidebar li .a{
     display: flex;
     height: 100%;
     width: 100%;
@@ -740,7 +762,7 @@ body{
     z-index: 12;
 }
 
-.sidebar li a::after{
+.sidebar li .a::after{
     content: "";
     position: absolute;
     width: 100%;
@@ -753,12 +775,12 @@ body{
     z-index: -2;
 }
 
-.sidebar li a:hover::after{
+.sidebar li .a:hover::after{
     transform: scaleX(1);
     color: var(--color-azul_200);
 }
 
-.sidebar li a .link_name{
+.sidebar li .a .link_name{
     color: var(--color-amarillo_100);
     font-size: 20px;
     font-weight: 600;
@@ -769,7 +791,7 @@ body{
     opacity: 0;
 }
 
-.sidebar.open li a .link_name{
+.sidebar.open li .a .link_name{
     opacity: 1;
     pointer-events: auto;
 }
@@ -877,7 +899,7 @@ body{
     transition: background-color 0.3s ease;
 }
 
-.fixed-div a{
+.fixed-div h3{
     background-color: var(--color-amarillo_100);
     color: var(--color-blanco);
     width: 60%;
@@ -894,7 +916,7 @@ body{
     transition: background-color 0.3s ease;
 }
 
-.fixed-div a:hover{
+.fixed-div h3:hover{
     background-color: var(--color-verde-100); /* Cambia el color al pasar el ratón sobre el botón */
 }
 

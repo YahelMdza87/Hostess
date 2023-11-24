@@ -19,52 +19,66 @@
             </div>
             <ul class="nav-list">
                 <li>
-                    <a href="#"> 
+                    <div id="1" class="a" onclick="mostrarPlatillos(1)"> 
+                        <img class="img-menu" src="Imagenes/Desayuno.png" alt="#">
+                        <span class="link_name"> Entradas</span>
+                    </div>
+                    <span class="tooltip"> Entradas</span>
+                </li>
+                <li>
+                    <div id="2" class="a" onclick="mostrarPlatillos(2)"> 
                         <img class="img-menu" src="Imagenes/Desayuno.png" alt="#">
                         <span class="link_name"> Desayunos</span>
-                    </a>
+                    </div>
                     <span class="tooltip"> Desayunos</span>
                 </li>
                 <li>
-                    <a href="#"> 
+                    <div id="3" class="a" onclick="mostrarPlatillos(3)"> 
                         <img class="img-menu" src="Imagenes/Pancakes.png" alt="#">
                         <span class="link_name"> Pancakes</span>
-                    </a>
+                    </div>
                     <span class="tooltip"> Pancakes</span>
                 </li>
                 <li>
-                    <a href="#"> 
+                    <div id="4" class="a" onclick="mostrarPlatillos(4)"> 
                         <img class="img-menu" src="Imagenes/Hamburguesa.png" alt="#">
                         <span class="link_name"> Hamburguesas</span>
-                    </a>
+                    </div>
                     <span class="tooltip"> Hamburguesas</span>
                 </li>
                 <li>
-                    <a href="#"> 
+                    <div id="5" class="a" onclick="mostrarPlatillos(5)"> 
                         <img class="img-menu" src="Imagenes/Comida.png" alt="#">
                         <span class="link_name"> Comidas</span>
-                    </a>
+                    </div>
                     <span class="tooltip">Comidas</span>
                 </li>
                 <li>
-                    <a href="#"> 
+                    <div id="6" class="a" onclick="mostrarPlatillos(6)"> 
                         <img class="img-menu" src="Imagenes/Wraps.png" alt="#">
                         <span class="link_name">Wraps</span>
-                    </a>
+                    </div>
                     <span class="tooltip">Wraps</span>
                 </li>
                 <li>
-                    <a href="#"> 
+                    <div id="7" class="a" onclick="mostrarPlatillos(7)"> 
                         <img class="img-menu" src="Imagenes/ninos.png" alt="#">
-                        <span class="link_name">Niños</span>
-                    </a>
-                    <span class="tooltip">Niños</span>
+                        <span class="link_name">Kids</span>
+                    </div>
+                    <span class="tooltip">Kids</span>
                 </li>
                 <li>
-                    <a href="#"> 
+                    <div id="8" class="a" onclick="mostrarPlatillos(8)"> 
+                        <img class="img-menu" src="Imagenes/ninos.png" alt="#">
+                        <span class="link_name">Para compartir</span>
+                    </div>
+                    <span class="tooltip">Para compartir</span>
+                </li>
+                <li>
+                    <div id="9" class="a" onclick="mostrarPlatillos(9)"> 
                         <img class="img-menu" src="Imagenes/Bebida.png" alt="#">
                         <span class="link_name"> Bedidas</span>
-                    </a>
+                    </div>
                     <span class="tooltip"> Bebidas</span>
                 </li>
             </ul>
@@ -74,13 +88,18 @@
             <img src="Imagenes/Pancakes.png" id="img-titulo" alt="#">    
                 <t id="texto-titulo">Pancakes</t>
             </div>
+            <section id="menu">
+                
+            </section>
         </section>
         <div class="fixed-div">
             <div class="titulo-fixed">
                 Pedido
             </div>
             <div class="carrito">
-                
+                <section id="comanda_mesa">
+                    
+                </section>
             </div>
             <table class="total">
                 <tr class="total-tr">
@@ -94,6 +113,6 @@
             <a href="mesas.html" type="button">Regresar</a>
         </div>
         
-        <script src="script.js"></script>
+        <script src="scriptOrdenarMesa.js"></script>
     </body>
 </html>
