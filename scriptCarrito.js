@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function cargarCarrito(){
     //Peticion a server.js para mostrar buffCarrito
-    fetch(`http://192.168.1.75:3000/carrito`)
+    fetch(`http://localhost:3000/carrito`)
     .then(response => response.json())
     .then(data => {
         //Obtenemos el JSON y lo mandamos a verCarrito (donde crearemos los divs, h3, etc. necesarios)
@@ -111,7 +111,7 @@ function actualizarPlatillo(id,idprod,cantidad_Nueva,comentarios){
         Comentarios: comentarios
     };
     console.log("_______",datosCarrito);
-    fetch('http://192.168.1.75:3000/actualizarPlatillo' , {
+    fetch('http://localhost:3000/actualizarPlatillo' , {
         method: 'PUT',
         headers: {
             'Content-Type':'application/json'
@@ -129,7 +129,7 @@ function actualizarPlatillo(id,idprod,cantidad_Nueva,comentarios){
 }
 
 function eliminarPlatillo(id){
-    fetch(`http://192.168.1.75:3000/eliminarPlatillo/${id}`, {
+    fetch(`http://localhost:3000/eliminarPlatillo/${id}`, {
         method: 'DELETE'
     })
     .then(response => response.json())

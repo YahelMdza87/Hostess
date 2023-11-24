@@ -37,7 +37,7 @@ function resetEstiloCategorias() {
 let contador = 0;
 //Función para obtener todos los platillos de una categoria mediante una petición
 function fetchMenuPlatillos(id_categoria) {
-    fetch(`http://192.168.1.75:3000/platillos/${id_categoria}`) //Se hace la peticion a server.js
+    fetch(`http://localhost:3000/platillos/${id_categoria}`) //Se hace la peticion a server.js
         .then(response => response.json()) //Una vez hecha la peticon, declaramos que recibiremos los datos en formato json
         .then(data => { //Nuestro JSON será data que contiene todos los platillos que hay en la categoría dicha
             console.log(id_categoria);
@@ -99,7 +99,7 @@ function fetchMenuPlatillos(id_categoria) {
 }
 
 function agregarPlatilloCarrito(datosPlatillo){
-    fetch('http://192.168.1.75:3000/agregarPlatilloCarrito', {
+    fetch('http://localhost:3000/agregarPlatilloCarrito', {
         //Realizamos una petición al servidor POST, recibirá un valor y en este caso JSON
         method: 'POST',
         headers: {
@@ -121,7 +121,7 @@ function agregarPlatilloCarrito(datosPlatillo){
 
 function aumentarCarritoContador(){
     //Obtenemos todos los datos que hay en la tabla buffCarrito
-    fetch('http://192.168.1.75:3000/carrito')
+    fetch('http://localhost:3000/carrito')
                     .then(response => response.json())
                     .then(data => {
                         //Obtenemos la cantidad máxima que hay
@@ -144,7 +144,7 @@ function generarQr(){
     //     },
     //     body: JSON.stringify(requestData)
     // };
-    // fetch('http://192.168.1.75:3000/generar_qr', fetchOptions)
+    // fetch('http://localhost:3000/generar_qr', fetchOptions)
     //     .then(response => response.text())
     //     .then(data => {
     //         document.getElementById('qr').innerHTML=data;
