@@ -1,6 +1,0 @@
-INSERT INTO `mydb`.`productos` (`Categorias_Id_categoria`, `Nombre`, `Descripcion`, `Precio_producto`) VALUES ('1', 'Avena', 'Plato de avena que lleva platano y ya', '90');
-INSERT INTO `mydb`.`productos` (`Categorias_Id_categoria`, `Nombre`, `Descripcion`, `Precio_producto`) VALUES ('1', 'Avocado toast', 'Pan multigrano decorado con huevo, tocino y verdura', '95');
-INSERT INTO `mydb`.`productos` (`Categorias_Id_categoria`, `Nombre`, `Descripcion`, `Precio_producto`) VALUES ('1', 'Plato fruta', 'Combinacion de platano, fresa, papaya y yoghurt', '90');
-INSERT INTO `mydb`.`productos` (`Categorias_Id_categoria`, `Nombre`, `Descripcion`, `Precio_producto`) VALUES ('2', 'Huevos montados', 'Dos huevos montados sobre chilaquiles con dos complementos', '145');
-INSERT INTO `mydb`.`productos` (`Categorias_Id_categoria`, `Nombre`, `Descripcion`, `Precio_producto`) VALUES ('2', 'Huevos ver', 'Dos huevos montados sobre 3 quesadillas banados en salsa frijol', '121');
-INSERT INTO `mydb`.`productos` (`Categorias_Id_categoria`, `Nombre`, `Descripcion`, `Precio_producto`) VALUES ('2', 'Desayuno Ame', 'Dos huevos, 3 pz jamon, 3 tiras tocino y 2pz pancakes', '157');
