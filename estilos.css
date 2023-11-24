@@ -578,3 +578,440 @@ main {
             font-size: 2.6vh;
         }
 }
+
+
+
+/* TODO LO DE JP */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Roboto+Slab&family=Rubik&family=Source+Code+Pro:wght@600&display=swap');
+
+#logo {
+    width: 50px; /* Puedes ajustar este valor según tus necesidades */
+    height: auto; /* Para mantener la proporción de la imagen */
+    margin: -1px;
+}
+
+.img-menu{
+    width: 40px; /* Puedes ajustar este valor según tus necesidades */
+    height: auto; 
+}
+
+:root{
+    --color-azul_200: #112149;
+    --color-azul_100: #00A2FF;
+    --color-verde-100: #04B5A3;
+    --color-amarillo_100: #FFAD00;
+    --color-naranja_100: #FF8000;
+    --color-blanco: #ffffff;
+    --color-negro: #000000;
+}
+
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+   font-family: 'Rubik', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+}
+
+.sidebar{
+    min-height: 100vh;
+    width: 80px;
+    padding: 6px 14px;
+    z-index: 99;
+    background-color: var(--color-azul_200);
+    transition: all .5s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.sidebar.open{
+    width: 250px;
+}
+
+.sidebar .logo_details{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+
+.sidebar .logo_details .icon{
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.sidebar .logo_details .logo_name{
+    color: var(--color-blanco);
+    font-size: 22px;
+    font-weight: 600;
+    opacity: 0;
+    margin: 15px;
+    transition: all .5s ease;
+}
+.sidebar.open .logo_details .icon, .sidebar.open .logo_details .logo_name{
+    opacity: 1;
+}
+
+
+.sidebar .logo_details #btn{
+    position: absolute;
+    top: 50%;
+    right: -3px;
+    transform: translateY(-50%);
+    font-size: 23px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.sidebar.open .logo_details #btn{
+    text-align: right;
+
+}
+.sidebar i{
+    color: var(--color-blanco);
+    width: 10px;
+    height: auto;
+    line-height: 60px;
+    min-width: 30px;
+    margin: 10px 15px ;
+}
+
+.sidebar img{
+    width: 30px;
+    height: auto;
+    line-height: 60px;
+    min-width: 30px;
+    margin: 10px 15px ;
+}
+
+.sidebar .nav-list{
+    margin-top: 20px;
+    height: 100%;
+}
+.sidebar li{
+    position: relative;
+    margin: 8px -4px;
+    list-style: none;
+}
+
+.sidebar li .tooltip{
+    position: absolute;
+    top: 10px;
+    left: calc(100% + 20px);
+    z-index: 3;
+    background-color: var(--color-verde-100);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    padding: 4px 14px;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar li:hover .tooltip{
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.4s ease;
+    top: 30%;
+    transform: translate(-10%);
+}
+
+.sidebar.open li .tooltip{
+    display: none;
+}
+
+
+.sidebar li a{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    text-decoration: none;
+    background-color: var(--color-azul_200);
+    position: relative;
+    transition: all .5s ease;
+    z-index: 12;
+}
+
+.sidebar li a::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    background-color: var(--color-blanco);
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: left;
+    z-index: -2;
+}
+
+.sidebar li a:hover::after{
+    transform: scaleX(1);
+    color: var(--color-azul_200);
+}
+
+.sidebar li a .link_name{
+    color: var(--color-amarillo_100);
+    font-size: 20px;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: auto;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.sidebar.open li a .link_name{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.home-section{
+    position: relative;
+    background-color: var(--color-blanco);
+    min-height: 100vh;
+    top: 0;
+    left: 70px;
+    width: calc(100% - 370px);
+    transition: all .5s ease;
+    z-index: 2;
+    overflow-y: auto;
+}
+
+.home-section .titulo{
+    display: inline-flex;
+    color: var(--color-amarillo_100);
+    font-size: 8vh;
+    font-weight: 600;
+    margin-top: 10px; 
+    align-items: center; /* Alinea verticalmente al centro */
+    justify-content: center;
+}
+
+.home-section #img-titulo{
+    width: 80px; /* Puedes ajustar este valor según tus necesidades */
+    height: auto;
+    margin-left: 5vh;
+}
+
+.home-section #texto-titulo{
+    margin-left: 3vh;
+}
+
+
+.sidebar.open .home-section {
+    left: 250px;
+    width: calc(100% - 250px);
+}
+
+
+.fixed-div {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 370px; /* Ajusta el ancho según tus necesidades */
+    height: 100vh;
+    background-color: var(--color-azul_200); /* Ajusta el color de fondo según tus preferencias */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+.fixed-div .titulo-fixed{
+    display: inline-flex;
+    color: var(--color-amarillo_100);
+    font-size: 8vh;
+    font-weight: 600;
+    margin-top: 20px; 
+    margin-left: 20%;
+}
+.fixed-div .carrito{
+    display: inline-flex;
+    color: var(--color-amarillo_100);
+    background-color: var(--color-blanco);
+    height: 54%;
+    width: 75%;
+    font-size: 8vh;
+    font-weight: 600;
+    margin-top: 5px; 
+    margin-left: 20%;
+    border-radius: 5px;
+    border: 4px solid var(--color-azul_100);
+    transition: all .5s ease;
+    overflow-y: auto;
+}
+
+.fixed-div .carrito:hover {
+    border-color: var(--color-naranja_100);
+}
+
+.fixed-div .total-textarea:focus {
+    border-color: var(--color-naranja_100);
+}
+
+
+.fixed-div .boton {
+    background-color: var(--color-amarillo_100);
+    color: var(--color-blanco);
+    left: 40%;
+    width: 60%;
+    padding: 6px 20px;
+    margin-left: 20%;
+    margin-top: 15px; /* Ajusta el espacio entre el título y los botones según tus preferencias */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.fixed-div a{
+    background-color: var(--color-amarillo_100);
+    color: var(--color-blanco);
+    width: 60%;
+    padding: 6px 10px;
+    margin-left: 20%;
+    margin-top: 15px; /* Ajusta el espacio entre el título y los botones según tus preferencias */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.fixed-div a:hover{
+    background-color: var(--color-verde-100); /* Cambia el color al pasar el ratón sobre el botón */
+}
+
+.fixed-div .simbologia{
+    display: inline-flex;
+    color: var(--color-amarillo_100);
+    background-color: var(--color-blanco);
+    height: 30%;
+    width: 75%;
+    font-size: 8vh;
+    font-weight: 600;
+    margin-top: 20%; 
+    margin-left: 20%;
+    border-radius: 5px;
+    border: 4px solid var(--color-azul_100);
+}
+
+.fixed-div .bxs-square-rounded{
+    font-size: 6vh; 
+    border-radius: 5px;
+    margin-left: 20%;
+}
+
+.fixed-div .simbologia-texto{
+    color: var(--color-azul_200);
+    font-size: 5vh; 
+    padding-left: 2vh;
+}
+
+.simbologia table {
+    border-spacing: 0; /* Elimina el espacio entre los renglones */
+}
+
+.simbologia td {
+    padding: 5px; /* Ajusta el espacio interno de las celdas según tus preferencias */
+    line-height: 1; /* Ajusta la altura de línea para reducir el espacio entre renglones */
+}
+
+
+.fixed-div .ventas {
+    margin-top: 20%;
+    margin-bottom: 20%;
+    margin-left: 20%;
+}
+
+.fixed-div .ventas-tr{
+    text-align: center;
+}
+
+.fixed-div .ventas-label {
+    color: var(--color-verde-100);
+    width: 100%;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.fixed-div .ventas-textarea {
+    padding: 8px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+    width: 100%; /* Ajusta el ancho según tus necesidades */
+    height: 50px; /* Ajusta la altura según tus necesidades */
+    font-weight: 600;
+    border: 4px solid #00A2FF;
+    border-radius: 5px;
+    background-color: var(--color-blanco); /* Ajusta el color de fondo según tus preferencias */
+    color: var(--color-azul_100); /* Ajusta el color del texto según tus preferencias */
+    resize: none; /* Evita que el usuario pueda redimensionar el textarea */
+    transition: border-color 0.5s ease;
+}
+
+.fixed-div .ventas-textarea:hover {
+    border-color: var(--color-naranja_100);
+}
+
+.fixed-div .ventas-textarea:focus {
+    outline: none; /* Evita el contorno por defecto al hacer clic */
+}
+
+.fixed-div .total {
+    margin-top: 8px;
+    margin-bottom: -10px;
+    margin-left: 20%;
+}
+
+.fixed-div .total-tr{
+    text-align: center;
+}
+
+.fixed-div .total-label {
+    color: var(--color-verde-100);
+    width: 100%;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.fixed-div .total-textarea {
+    padding: 8px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 17px;
+    width: 100%; /* Ajusta el ancho según tus necesidades */
+    height: 44px; /* Ajusta la altura según tus necesidades */
+    font-weight: 600;
+    border: 4px solid #00A2FF;
+    border-radius: 5px;
+    background-color: var(--color-blanco); /* Ajusta el color de fondo según tus preferencias */
+    color: var(--color-azul_100); /* Ajusta el color del texto según tus preferencias */
+    resize: none; /* Evita que el usuario pueda redimensionar el textarea */
+    transition: border-color 0.5s ease;
+}
+
+.fixed-div .total-textarea:hover {
+    border-color: var(--color-naranja_100);
+}
+
+.fixed-div .total-textarea:focus {
+    outline: none; /* Evita el contorno por defecto al hacer clic */
+}

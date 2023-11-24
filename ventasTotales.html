@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/png" href="Imagenes/Logo.png" />
+        <title>Hostess - Ventas</title>
+        <link rel="stylesheet" href="estilos.css" type="text/css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="logo_details">
+                <img id="logo" class="icon" src="Imagenes/Logo.png" alt="#">
+                <div class="logo_name">Hostess</div> 
+                <i class="bx bx-menu" id="btn"></i>
+            </div>
+            <ul class="nav-list">
+                <li>
+                    <a href="mesas.html"> 
+                        <img class="img-menu" src="Imagenes/mesa-redonda.png" alt="#">
+                        <span class="link_name">Mesas</span>
+                    </a>
+                    <span class="tooltip">Mesas</span>
+                </li>
+                <li>
+                    <a href="ventasTotales.html"> 
+                        <img class="img-menu" src="Imagenes/Ticket.png" alt="#">
+                        <span class="link_name">Ventas</span>
+                    </a>
+                    <span class="tooltip">Ventas</span>
+                </li>
+              
+            </ul>
+        </div>
+        <section class="home-section">     
+            <div class="titulo">
+            <img src="Imagenes/Ticket.png" id="img-titulo" alt="#">    
+                <t id="texto-titulo">Ventas</t>
+            </div>
+        </section>
+        <div class="fixed-div">
+            <div class="titulo-fixed">
+                Resumen
+            </div>
+            
+            
+                <table class="ventas">
+                    <tr class="ventas-tr">
+                        <td><label for="efectivo" class="ventas-label">Total Efectivo</label></td>
+                    </tr>
+                    <tr class="ventas-tr">
+                        <td><textarea id="efectivo" class="ventas-textarea" readonly> </textarea></td>
+                    </tr>
+                    <tr class="ventas-tr">
+                        <td><label for="tarjeta" class="ventas-label">Total Tarjeta</label></td>
+                    </tr>
+                    <tr class="ventas-tr">
+                        <td><textarea id="tarjeta" class="ventas-textarea" readonly> </textarea></td>
+                    </tr>
+                    <tr class="ventas-tr">
+                        <td><label for="ventas" class="ventas-label">Total Ventas</label></td>
+                    </tr>
+                    <tr class="ventas-tr">
+                        <td><textarea id="ventas" class="ventas-textarea" readonly></textarea></td>
+                    </tr>
+                </table> 
+            
+            
+            <a href="#" type="button">Imprimir</a>
+        </div>
+        
+        <script src="script.js"></script>
+    </body>
+</html>

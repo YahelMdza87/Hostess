@@ -132,27 +132,29 @@ function aumentarCarritoContador(){
 }
 
 function generarQr(){
-    const requestData = {
-        qr_code_text: "https://www.qr-code-generator.com/"
-        // Otros datos que puedas necesitar enviar
-    };
+    // const requestData = {
+    //     qr_code_text: "https://www.qr-code-generator.com/"
+    //     // Otros datos que puedas necesitar enviar
+    // };
 
-    const fetchOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestData)
-    };
-    fetch('http://192.168.1.75:3000/generar_qr', fetchOptions)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('qr').innerHTML=data;
-            console.log(data);
-        })
-        .catch(error => {
-            console.error(error)
-        })
+    // const fetchOptions = {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(requestData)
+    // };
+    // fetch('http://192.168.1.75:3000/generar_qr', fetchOptions)
+    //     .then(response => response.text())
+    //     .then(data => {
+    //         document.getElementById('qr').innerHTML=data;
+    //         console.log(data);
+    //     })
+    //     .catch(error => {
+    //         console.error(error)
+    //     })
+
+    window.location.href = "menuMesero.html";
 }
 
 let posicion_Actual = -30;

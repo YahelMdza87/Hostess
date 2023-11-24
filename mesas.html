@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/png" href="Imagenes/Logo.png" />
+        <title>Hostess - Mesas</title>
+        <link rel="stylesheet" href="estilos.css" type="text/css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="logo_details">
+                <img id="logo" class="icon" src="Imagenes/Logo.png" alt="#">
+                <div class="logo_name">Hostess</div> 
+                <i class="bx bx-menu" id="btn"></i>
+            </div>
+            <ul class="nav-list">
+                <li>
+                    <a href="mesas.html"> 
+                        <img class="img-menu" src="Imagenes/mesa-redonda.png" alt="#">
+                        <span class="link_name">Mesas</span>
+                    </a>
+                    <span class="tooltip">Mesas</span>
+                </li>
+                <li>
+                    <a href="ventasTotales.html"> 
+                        <img class="img-menu" src="Imagenes/Ticket.png" alt="#">
+                        <span class="link_name">Ventas</span>
+                    </a>
+                    <span class="tooltip">Ventas</span>
+                </li>
+              
+            </ul>
+        </div>
+        <section class="home-section">     
+            <div class="titulo">
+            <img src="Imagenes/mesa-redonda.png" id="img-titulo" alt="#">    
+                <t id="texto-titulo">Mesas</t>
+            </div>
+        </section>
+        <div class="fixed-div">
+            <div class="titulo-fixed">
+                Zonas
+            </div>
+            <a href="mesas.html" type="button">Exterior</a>
+            <a href="mesas.html" type="button">Interior</a>
+            <a href="mesas.html" type="button">Terraza</a>
+            <a href="mesas.html" type="button">Jardin A</a>
+            <a href="mesas.html" type="button">Jardin B</a>
+            <div class="simbologia">
+                <table>
+                    <tr>
+                        <td><i class='bx bxs-square-rounded' style='color:#04B5A3'></i></td><td class="simbologia-texto">Desocupado</td>
+                    </tr>
+                    <tr>
+                        <td><i class='bx bxs-square-rounded' style='color:#FFAD00'></i></td><td class="simbologia-texto">Ocupado</td>
+                    </tr>
+                    <tr>
+                        <td><i class='bx bxs-square-rounded' style='color:#FF8000'></i></td><td class="simbologia-texto">Pendiente</td>
+                    </tr>
+                </table> 
+            </div>
+        </div>
+        
+        <script src="script.js"></script>
+    </body>
+</html>

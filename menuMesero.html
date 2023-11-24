@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/png" href="Imagenes/Logo.png" />
+        <title>Hostess - Menu</title>
+        <link rel="stylesheet" href="estilos.css" type="text/css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="logo_details">
+                <img id="logo" class="icon" src="Imagenes/Logo.png" alt="#">
+                <div class="logo_name">Hostess</div> 
+                <i class="bx bx-menu" id="btn"></i>
+            </div>
+            <ul class="nav-list">
+                <li>
+                    <a href="#"> 
+                        <img class="img-menu" src="Imagenes/Desayuno.png" alt="#">
+                        <span class="link_name"> Desayunos</span>
+                    </a>
+                    <span class="tooltip"> Desayunos</span>
+                </li>
+                <li>
+                    <a href="#"> 
+                        <img class="img-menu" src="Imagenes/Pancakes.png" alt="#">
+                        <span class="link_name"> Pancakes</span>
+                    </a>
+                    <span class="tooltip"> Pancakes</span>
+                </li>
+                <li>
+                    <a href="#"> 
+                        <img class="img-menu" src="Imagenes/Hamburguesa.png" alt="#">
+                        <span class="link_name"> Hamburguesas</span>
+                    </a>
+                    <span class="tooltip"> Hamburguesas</span>
+                </li>
+                <li>
+                    <a href="#"> 
+                        <img class="img-menu" src="Imagenes/Comida.png" alt="#">
+                        <span class="link_name"> Comidas</span>
+                    </a>
+                    <span class="tooltip">Comidas</span>
+                </li>
+                <li>
+                    <a href="#"> 
+                        <img class="img-menu" src="Imagenes/Wraps.png" alt="#">
+                        <span class="link_name">Wraps</span>
+                    </a>
+                    <span class="tooltip">Wraps</span>
+                </li>
+                <li>
+                    <a href="#"> 
+                        <img class="img-menu" src="Imagenes/ninos.png" alt="#">
+                        <span class="link_name">Niños</span>
+                    </a>
+                    <span class="tooltip">Niños</span>
+                </li>
+                <li>
+                    <a href="#"> 
+                        <img class="img-menu" src="Imagenes/Bebida.png" alt="#">
+                        <span class="link_name"> Bedidas</span>
+                    </a>
+                    <span class="tooltip"> Bebidas</span>
+                </li>
+            </ul>
+        </div>
+        <section class="home-section">     
+            <div class="titulo">
+            <img src="Imagenes/Pancakes.png" id="img-titulo" alt="#">    
+                <t id="texto-titulo">Pancakes</t>
+            </div>
+        </section>
+        <div class="fixed-div">
+            <div class="titulo-fixed">
+                Pedido
+            </div>
+            <div class="carrito">
+                
+            </div>
+            <table class="total">
+                <tr class="total-tr">
+                    <td><label for="total" class="total-label">Total</label></td>
+                </tr>
+                <tr>
+                    <td><textarea id="total" class="total-textarea" readonly></textarea></td>
+                </tr>
+            </table>
+            <a href="mesas.html" type="button">Ordenar</a>
+            <a href="mesas.html" type="button">Regresar</a>
+        </div>
+        
+        <script src="script.js"></script>
+    </body>
+</html>
