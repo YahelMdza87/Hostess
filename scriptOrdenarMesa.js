@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function mostrarOrden(mesa){
-    const section_comanda = document.getElementById('comanda_mesa');
+    const section_comanda = document.getElementById('carrito');
     section_comanda.innerHTML='';
     fetch(`http://localhost:3000/ver_comanda/${mesa}`)
     .then(response => response.json())
@@ -23,18 +23,37 @@ function mostrarOrden(mesa){
         orden.forEach(platillo => {
             console.log(platillo);
             const pedido = document.createElement('div');
-            pedido.classList.add('platillo_pedido');
-            
-          
-            const platillo_pedido = document.createElement('h3');
+            pedido.classList.add('comanda_platillo');
+
+            const eliminar_Orden = document.createElement('img');
+            eliminar_Orden.src = "/imagenes/eliminar.png";
+            eliminar_Orden.classList.add('eliminar_orden')
+            eliminar_Orden.addEventListener('click', function(){
+                fetch(`http://localhost:3000/eliminarPlatilloMesa/${platillo.id_bitacoraMesa}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(resultado => {
+                    var urlParams = new URLSearchParams(window.location.search);
+                    var numero_mesa;
+                    numero_mesa = urlParams.get('mesa');
+                    mostrarOrden(numero_mesa);
+                })
+                .catch(error =>{
+                    console.log(error);
+                });
+            });
+
+            const platillo_pedido = document.createElement('h4');
             platillo_pedido.textContent = platillo.Nombre;
-            platillo_pedido.classList.add('nombre');
+            platillo_pedido.classList.add('comanda_platillo_nombre');
     
 
             const precio = document.createElement('p');
             precio.textContent = "$"+(platillo.Precio_producto);
-            precio.classList.add('precio');
-    
+            precio.classList.add('comanda_platillo_precio');
+
+            pedido.appendChild(eliminar_Orden);
             pedido.appendChild(platillo_pedido);
             pedido.appendChild(precio);
             section_comanda.appendChild(pedido);
@@ -95,6 +114,9 @@ function mostrarPlatillos(id_categoria) {
                     };
                     //Agregamos el platillo con el método agregarPlatilloMesa
                     agregarPlatilloMesa(datosCarrito);
+                    var urlParams = new URLSearchParams(window.location.search);
+                    var numero_mesa;
+                    mostrarOrden(numero_mesa);
                     console.log(item.Id_producto);
                     console.log(numero_mesa);
                 });

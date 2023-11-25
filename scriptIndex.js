@@ -154,7 +154,7 @@ function generarQr(){
     //         console.error(error)
     //     })
 
-    window.location.href = "menuMesero.html";
+    window.location.href = "mesas.html";
 }
 
 let posicion_Actual = -30;

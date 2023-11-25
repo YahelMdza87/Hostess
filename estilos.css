@@ -583,6 +583,38 @@ main {
 
 /* TODO LO DE JP */
 
+/* Orden de mesa */
+
+.comanda_platillo {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 12% 76% 12%;
+    grid-auto-rows: minmax(10%, auto); 
+    margin-top: 2%;
+}
+
+.eliminar_orden {
+    grid-column: 1;
+}
+
+.comanda_platillo_nombre {
+    color: #04B5A3;
+    font-size: 1.5vh;
+    white-space: nowrap;
+    grid-column: 2;
+    border-bottom: solid #11214959;
+}
+
+.comanda_platillo_precio {
+    color: #112149;
+    font-size: 1.5vh;
+    white-space: nowrap;
+    grid-column: 3;
+    text-align: right;
+    margin-right: 3%;
+    border-bottom: solid #11214959;
+}
+
 /* MESAS DE MESERO */
 .mesa_con_numero{
     width: 80%;
@@ -858,8 +890,7 @@ body{
     margin-top: 20px; 
     margin-left: 20%;
 }
-.fixed-div .carrito{
-    display: inline-flex;
+.fixed-div #carrito{
     color: var(--color-amarillo_100);
     background-color: var(--color-blanco);
     height: 54%;
@@ -874,7 +905,7 @@ body{
     overflow-y: auto;
 }
 
-.fixed-div .carrito:hover {
+.fixed-div #carrito:hover {
     border-color: var(--color-naranja_100);
 }
 

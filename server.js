@@ -90,6 +90,23 @@ app.delete('/eliminarPlatillo/:idPlatillo', (req, res) => {
     });
 });
 
+//Eliminar un platillo de la mesa
+app.delete('/eliminarPlatilloMesa/:idPlatillo', (req, res) => {
+    const id_platillo = req.params.idPlatillo;
+
+    // Se elimina el platillo que queremos eliminar 
+    connection.query('DELETE FROM buffmesa WHERE id_bitacoraMesa = ?', [id_platillo], (error, results, fields) => {
+        if (error) {
+            console.error('Error al eliminar del carrito:', error);
+            res.status(500).send('Error interno del servidor');
+            return;
+        }
+
+        // Enviar una respuesta con los resultados (puedes personalizar según tus necesidades)
+        res.json({ mensaje: 'Eliminado del carrito exitosamente', resultados: results });
+    });
+});
+
 
 //Recibimos los valores y los convertimos
 app.use(bodyParser.json());

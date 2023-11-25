@@ -1,5 +1,5 @@
 window.onload = function(){
-    mostrarMesas(21);
+    mostrarMesas(1);
     const sidebar = document.querySelector(".sidebar");
     const closeBtn = document.querySelector("#btn");
     
@@ -18,7 +18,6 @@ window.onload = function(){
         }
     }
 }
-
 function mostrarMesas(area){
     const contenedorMesas = document.getElementById('contenedor_mesas');
     contenedorMesas.innerHTML='';
@@ -26,32 +25,55 @@ function mostrarMesas(area){
     .then(response => response.json())
     .then(mesas => {
         console.log(mesas);
-        let contador = 0;
+        
         mesas.forEach(mesa => {
-        contador++;
         const contenedor = document.createElement('div');
         contenedor.classList.add('mesa_con_numero');
 
         contenedor.addEventListener('click', function(){
             window.location.href = "menuMesa.html?mesa=" + encodeURIComponent(mesa.Id_mesas);
         });
-
         const imagenMesa = document.createElement('img');
-        imagenMesa.src = "/imagenes/Mesa_D.png"
-        imagenMesa.classList.add('mesa_menu_mesero');
+        
+        // Maneja la Promesa aquí
+        checarEstado(mesa.Id_mesas)
+                    .then(estado => {
+                        console.log(estado)
+                        if (estado == 0) {
+                            imagenMesa.src = "/imagenes/Mesa_D.png"
+                        } else {
+                            imagenMesa.src = "/imagenes/Mesa_O.png"
+                        }
 
-        const numero = document.createElement('h3');
-        numero.classList.add('numero_mesa');
-        numero.textContent = "Mesa "+ mesa.Numero;
+                        imagenMesa.classList.add('mesa_menu_mesero');
 
-        contenedor.appendChild(imagenMesa);
-        contenedor.appendChild(numero);
-        contenedorMesas.appendChild(contenedor);
-        contenedorMesas.c
+                        const numero = document.createElement('h3');
+                        numero.classList.add('numero_mesa');
+                        numero.textContent = "Mesa " + mesa.Numero;
 
-    });
-    })
-    .catch(error =>{
-        console.log('Error en :', error);
-    });
+                        contenedor.appendChild(imagenMesa);
+                        contenedor.appendChild(numero);
+                        contenedorMesas.appendChild(contenedor);
+                    })
+                    .catch(error => {
+                        console.error('Error en checarEstado:', error);
+                        // Puedes manejar el error aquí si es necesario
+                    });
+            });
+        })
+        .catch(error => {
+            console.log('Error en :', error);
+        });
+}
+
+function checarEstado(numMesa) {
+    return fetch(`http://localhost:3000/ver_comanda/${numMesa}`)
+        .then(response => response.json())
+        .then(orden => {
+            var estado = orden.length;
+            return estado;
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }
