@@ -585,10 +585,76 @@ main {
 
 /* Orden de mesa */
 
+.platillo_menu_ordenar{
+    margin: 0;
+    border-bottom: solid 6px #11214946;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: minmax(20%, auto);
+    margin-bottom: 3%;
+    width: 96%;
+    margin-left: 2%;
+    transition: box-shadow 0.3s ease;
+}
+.platillo_menu_ordenar:hover{
+    cursor: pointer;
+    border: none;
+    box-shadow: 3px 3px 2px 3px rgba(0, 0, 0, 0.664);
+    transition: box-shadow 0.3s ease;
+}
+
+    .platillo_menu_ordenar h3{
+        grid-column: 1 / 4;
+        grid-row: 1;
+        margin-top: 3%;
+        margin-left: 4%;
+        margin-bottom: 5%;
+        color: #04B5A3;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 4.5vh;
+    }
+    .platillo_menu_ordenar .descripcion{
+        grid-row: 2;
+        grid-column: 1 / 4;
+        margin-top: 2%;
+        margin-left: 4%;
+        margin-bottom: 4%;
+        color: #00A2FF;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 2.3vh;
+    }
+    .platillo_menu_ordenar .imagen{
+        grid-row: 2;
+        grid-column: 4 / 5;
+        margin-bottom: 15%;
+        margin-left: 40%;
+        width: 100px;
+        height: 80px;
+        
+    }
+    .platillo_menu_ordenar .precio{
+        grid-row:  1;
+        grid-column: 6;
+        margin-top: 5%;
+        margin-right: 60px;
+        color: #FFAD00;
+        text-align: left;
+        width: 35px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 3.4vh;
+    }
+    .platillo_menu_ordenar .btnAgregarCarrito{
+        margin-right: 30px;
+        grid-row:  2;
+        grid-column: 6;
+        padding: 1px;
+        width: 80px;
+    }
+
 .comanda_platillo {
     display: grid;
     align-items: center;
-    grid-template-columns: 12% 76% 12%;
+    grid-template-columns: 7% 86% 7%;
     grid-auto-rows: minmax(10%, auto); 
     margin-top: 2%;
 }
@@ -611,7 +677,7 @@ main {
     white-space: nowrap;
     grid-column: 3;
     text-align: right;
-    margin-right: 3%;
+    margin-right: 20%;
     border-bottom: solid #11214959;
 }
 
@@ -628,20 +694,35 @@ main {
 }
 .mesa_menu_mesero{
     width: 100%;
+    transition: box-shadow 0.3s ease;
+}
+.mesa_menu_mesero:hover{
+    cursor: pointer;
+    box-shadow: 3px 3px 2px 3px #04b5a35b;
+    transition: box-shadow 0.3s ease;
 }
 .numero_mesa{
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #112149;
+    color: #04B5A3;
     font-size: 2vh;
 }
 
 .btnQr{
-    text-align: center;
+    background-color: #FFAD00;
+    color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #112149;
-    font-size: 2vh;
+    text-align: center;
+    border-radius: 20px;
+    height: 10%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
+
+
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Roboto+Slab&family=Rubik&family=Source+Code+Pro:wght@600&display=swap');
 
@@ -675,6 +756,10 @@ main {
 
 body{
     min-height: 100vh;
+}
+
+.btnQr:hover{
+    background-color: var(--color-azul_100);
 }
 
 .sidebar{
@@ -842,7 +927,7 @@ body{
     min-height: 100vh;
     top: 0;
     left: 70px;
-    width: calc(100% - 370px);
+    width: 68%;
     transition: all .5s ease;
     z-index: 2;
     overflow-y: auto;
@@ -879,7 +964,7 @@ body{
     position: fixed;
     top: 0;
     right: 0;
-    width: 370px; /* Ajusta el ancho según tus necesidades */
+    width: 33%; /* Ajusta el ancho según tus necesidades */
     height: 100vh;
     background-color: var(--color-azul_200); /* Ajusta el color de fondo según tus preferencias */
     display: flex;
@@ -1000,6 +1085,16 @@ body{
     margin-left: 20%;
 }
 
+.fixed-div .btn {
+    background-color: #FFAD00;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    border-radius: 20px;
+    height: 10%;
+    width: 70%;
+}
+
 .fixed-div .ventas-tr{
     text-align: center;
 }
@@ -1053,17 +1148,16 @@ body{
 }
 
 .fixed-div .total-textarea {
-    padding: 8px;
-    margin-bottom: 10px;
+   margin-bottom: 30%;
     text-align: center;
-    font-size: 17px;
+    font-size: 3vh;
     width: 100%; /* Ajusta el ancho según tus necesidades */
     height: 44px; /* Ajusta la altura según tus necesidades */
     font-weight: 600;
     border: 4px solid #00A2FF;
     border-radius: 5px;
     background-color: var(--color-blanco); /* Ajusta el color de fondo según tus preferencias */
-    color: var(--color-azul_100); /* Ajusta el color del texto según tus preferencias */
+    color: #112149;
     resize: none; /* Evita que el usuario pueda redimensionar el textarea */
     transition: border-color 0.5s ease;
 }

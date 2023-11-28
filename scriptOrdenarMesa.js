@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function mostrarOrden(mesa){
     const section_comanda = document.getElementById('carrito');
     section_comanda.innerHTML='';
+    var total=0;
     fetch(`http://192.168.1.75:3000/ver_comanda/${mesa}`)
     .then(response => response.json())
     .then(orden => {
@@ -37,6 +38,9 @@ function mostrarOrden(mesa){
                     var urlParams = new URLSearchParams(window.location.search);
                     var numero_mesa;
                     numero_mesa = urlParams.get('mesa');
+                    total-=platillo.Precio_producto;
+                    document.getElementById('total').innerHTML='';
+                    console.log(total);
                     mostrarOrden(numero_mesa);
                 })
                 .catch(error =>{
@@ -50,14 +54,16 @@ function mostrarOrden(mesa){
     
 
             const precio = document.createElement('p');
-            precio.textContent = "$"+(platillo.Precio_producto);
+            precio.textContent = "$"+platillo.Precio_producto;
+            total+=platillo.Precio_producto;
+            console.log(total);
             precio.classList.add('comanda_platillo_precio');
-
+            document.getElementById('total').innerHTML='';
+            document.getElementById('total').innerHTML="$"+total;
             pedido.appendChild(eliminar_Orden);
             pedido.appendChild(platillo_pedido);
             pedido.appendChild(precio);
             section_comanda.appendChild(pedido);
-    
         });
 
     })
@@ -81,7 +87,7 @@ function mostrarPlatillos(id_categoria) {
              // Recorre los elementos de data para obtener el nombre, descripcion, etc.
              data.forEach(item => {
                 const platillo = document.createElement('div');
-                platillo.classList.add('platillo_menu');
+                platillo.classList.add('platillo_menu_ordenar');
 
                 // Crea elementos HTML para mostrar los detalles del producto (Nombre, Descripción, Precio, etc.)
                 const nombre_Platillo = document.createElement('h3');
@@ -92,7 +98,7 @@ function mostrarPlatillos(id_categoria) {
                 descripcion_Platillo.classList.add('descripcion');
 
                 const precio_Platillo = document.createElement('p');
-                precio_Platillo.textContent = `$${item.Precio_producto}`;
+                precio_Platillo.textContent = "$"+item.Precio_producto;
                 precio_Platillo.classList.add('precio');
 
                 const imagen_Platillo = document.createElement('img');
@@ -100,10 +106,7 @@ function mostrarPlatillos(id_categoria) {
                 imagen_Platillo.src = "/imagenes/"+img;
                 imagen_Platillo.classList.add('imagen')
 
-                const botonImg_Agregar = document.createElement('img');
-                botonImg_Agregar.src = '/imagenes/agregar_cantidad.png';
-                botonImg_Agregar.classList.add('btnAgregarCarrito');
-                botonImg_Agregar.addEventListener('click', function() {
+                platillo.addEventListener('click', function() {
                     var urlParams = new URLSearchParams(window.location.search);
                     var numero_mesa;
                     numero_mesa = urlParams.get('mesa');
@@ -127,7 +130,6 @@ function mostrarPlatillos(id_categoria) {
                 platillo.appendChild(descripcion_Platillo);
                 platillo.appendChild(precio_Platillo);
                 platillo.appendChild(imagen_Platillo);
-                platillo.appendChild(botonImg_Agregar);
                 section_menu.appendChild(platillo);
             });
         })

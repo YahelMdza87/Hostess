@@ -193,7 +193,7 @@ app.post('/generar_qr/:numeroMesa', async (req, res) => {
         // Datos del cuerpo de la solicitud
         const requestData = {
             frame_name: "no-frame",
-            qr_code_text: "http://192.168.1.75:3000/index.html?mesa="+mesa,
+            qr_code_text: "http://192.168.0.119:3000/index.html?mesa="+mesa,
             image_format: "SVG",
             qr_code_logo: "scan-me-square"
         };

@@ -39,7 +39,7 @@ function resetEstiloCategorias() {
 let contador = 0;
 //Función para obtener todos los platillos de una categoria mediante una petición
 function fetchMenuPlatillos(id_categoria) {
-    fetch(`http://localhost:3000/platillos/${id_categoria}`) //Se hace la peticion a server.js
+    fetch(`http://192.168.1.75:3000/platillos/${id_categoria}`) //Se hace la peticion a server.js
         .then(response => response.json()) //Una vez hecha la peticon, declaramos que recibiremos los datos en formato json
         .then(data => { //Nuestro JSON será data que contiene todos los platillos que hay en la categoría dicha
             console.log(id_categoria);
@@ -101,7 +101,7 @@ function fetchMenuPlatillos(id_categoria) {
 }
 
 function agregarPlatilloCarrito(datosPlatillo){
-    fetch('http://localhost:3000/agregarPlatilloCarrito', {
+    fetch('http://192.168.1.75:3000/agregarPlatilloCarrito', {
         //Realizamos una petición al servidor POST, recibirá un valor y en este caso JSON
         method: 'POST',
         headers: {
