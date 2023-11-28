@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function cargarCarrito(){
     //Peticion a server.js para mostrar buffCarrito
-    fetch(`http://localhost:3000/carrito`)
+    fetch(`http://192.168.1.75:3000/carrito`)
     .then(response => response.json())
     .then(data => {
         //Obtenemos el JSON y lo mandamos a verCarrito (donde crearemos los divs, h3, etc. necesarios)
@@ -17,7 +17,9 @@ function cargarCarrito(){
  }
 //Para regresar al index al momento de picar a la X
 function regresarIndex(){
-    window.location.href="index.html";
+    var urlParams = new URLSearchParams(window.location.search);
+    var numero_mesa = urlParams.get('mesa');
+    window.location.href="index.html?mesa="+numero_mesa;
 }
 //Método para ver los platillos mediante un JSON obtenido de una consulta
 function verCarrito(platillos){
@@ -111,7 +113,7 @@ function actualizarPlatillo(id,idprod,cantidad_Nueva,comentarios){
         Comentarios: comentarios
     };
     console.log("_______",datosCarrito);
-    fetch('http://localhost:3000/actualizarPlatillo' , {
+    fetch('http://192.168.1.75:3000/actualizarPlatillo' , {
         method: 'PUT',
         headers: {
             'Content-Type':'application/json'
@@ -129,7 +131,7 @@ function actualizarPlatillo(id,idprod,cantidad_Nueva,comentarios){
 }
 
 function eliminarPlatillo(id){
-    fetch(`http://localhost:3000/eliminarPlatillo/${id}`, {
+    fetch(`http://192.168.1.75:3000/eliminarPlatillo/${id}`, {
         method: 'DELETE'
     })
     .then(response => response.json())
@@ -140,4 +142,63 @@ function eliminarPlatillo(id){
     .catch(error => {
         console.error('Error al eliminar del carrito:', error);
     });
+}
+
+function eliminarPlatillos(){
+    fetch(`http://192.168.1.75:3000/eliminarPlatillos/`, {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Después de eliminar, vuelve a cargar los platillos del carrito
+        cargarCarrito();
+    })
+    .catch(error => {
+        console.error('Error al eliminar del carrito:', error);
+    });
+}
+
+function mandarMesa(){
+    //Peticion a server.js para mostrar buffCarrito
+    fetch(`http://192.168.1.75:3000/carritoOriginal`)
+    .then(response => response.json())
+    .then(data => {
+        var urlParams = new URLSearchParams(window.location.search);
+        var numero_mesa = urlParams.get('mesa');
+        const platillo_datos = data.map(item => {
+            return {
+                Productos_Id_producto: item.Productos_Id_producto,
+                Comentarios: item.Comentarios,
+                Mesas_Id_mesas: numero_mesa
+            };
+        });
+        mandarMesaFinal(platillo_datos);
+    })
+    .catch(error => {
+        console.error('Error al obtener los platillos', error);
+    })
+}
+
+function mandarMesaFinal(datos){
+    console.log(datos);
+    datos.forEach(registro => {
+        fetch('http://192.168.1.75:3000/agregarPlatilloMesa', {
+        //Realizamos una petición al servidor POST, recibirá un valor y en este caso JSON
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        //Transformamos de valor JavaScript a JSON (JavaScript Object Notation)
+        body: JSON.stringify(registro)
+    })
+    .then(response => response.json())
+    .then(data => {//En caso de hacerse todo correctamente, entra por aqu
+        console.log('Insertado en el carrito:', data);
+        eliminarPlatillos();
+    })
+    .catch(error => {
+        console.error('Error al insertar en el carrito:', error);
+    });
+    });
+    
 }

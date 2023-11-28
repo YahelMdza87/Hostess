@@ -330,9 +330,9 @@ main {
         color: white;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         text-align: center;
-        padding: 10px;
+        
         border-radius: 20px;
-        height: 50%;
+        height: 100%;
         width: 80%;
         margin-left: auto;
         margin-right: auto;
@@ -636,6 +636,13 @@ main {
     font-size: 2vh;
 }
 
+.btnQr{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #112149;
+    font-size: 2vh;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Roboto+Slab&family=Rubik&family=Source+Code+Pro:wght@600&display=swap');
 
 #logo {
@@ -662,7 +669,7 @@ main {
 *{
     padding: 0%;
     margin: 0%;
-    box-sizing: border-box;
+
    font-family: 'Rubik', sans-serif;
 }
 
@@ -672,7 +679,7 @@ body{
 
 .sidebar{
     min-height: 100vh;
-    width: 80px;
+    width: 50px;
     padding: 6px 14px;
     z-index: 99;
     background-color: var(--color-azul_200);

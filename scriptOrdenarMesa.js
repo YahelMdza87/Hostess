@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function mostrarOrden(mesa){
     const section_comanda = document.getElementById('carrito');
     section_comanda.innerHTML='';
-    fetch(`http://localhost:3000/ver_comanda/${mesa}`)
+    fetch(`http://192.168.1.75:3000/ver_comanda/${mesa}`)
     .then(response => response.json())
     .then(orden => {
         orden.forEach(platillo => {
@@ -29,7 +29,7 @@ function mostrarOrden(mesa){
             eliminar_Orden.src = "/imagenes/eliminar.png";
             eliminar_Orden.classList.add('eliminar_orden')
             eliminar_Orden.addEventListener('click', function(){
-                fetch(`http://localhost:3000/eliminarPlatilloMesa/${platillo.id_bitacoraMesa}`, {
+                fetch(`http://192.168.1.75:3000/eliminarPlatilloMesa/${platillo.id_bitacoraMesa}`, {
                     method: 'DELETE'
                 })
                 .then(response => response.json())
@@ -68,7 +68,7 @@ function mostrarOrden(mesa){
 
 //Función para obtener todos los platillos de una categoria mediante una petición
 function mostrarPlatillos(id_categoria) {
-    fetch(`http://localhost:3000/platillos/${id_categoria}`) //Se hace la peticion a server.js
+    fetch(`http://192.168.1.75:3000/platillos/${id_categoria}`) //Se hace la peticion a server.js
         .then(response => response.json()) //Una vez hecha la peticon, declaramos que recibiremos los datos en formato json
         .then(data => { //Nuestro JSON será data que contiene todos los platillos que hay en la categoría dicha
             console.log(id_categoria);
@@ -110,6 +110,7 @@ function mostrarPlatillos(id_categoria) {
                     //Hacemos un JSON desde aquí con el ID del producto y los demas por predeterminado
                     const datosCarrito = {
                         Productos_Id_producto: item.Id_producto,
+                        Comentarios: '',
                         Mesas_Id_mesas: numero_mesa
                     };
                     //Agregamos el platillo con el método agregarPlatilloMesa
@@ -136,7 +137,7 @@ function mostrarPlatillos(id_categoria) {
 }
 
 function agregarPlatilloMesa(datosPlatillo){
-    fetch('http://localhost:3000/agregarPlatilloMesa', {
+    fetch('http://192.168.1.75:3000/agregarPlatilloMesa', {
         //Realizamos una petición al servidor POST, recibirá un valor y en este caso JSON
         method: 'POST',
         headers: {

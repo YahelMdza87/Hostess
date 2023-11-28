@@ -25,7 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 //Cuando presionemos el footer (el botón de carrito) se dirige aquí
 function verCarrito() {
-    window.location.href="carrito.html";
+    var urlParams = new URLSearchParams(window.location.search);
+    var numero_mesa = urlParams.get('mesa');
+    window.location.href="carrito.html?mesa="+numero_mesa;
 }
  //Por si se cliqueo otro antes, resetea todos y se quedan con su estilo default
 function resetEstiloCategorias() {
@@ -76,8 +78,8 @@ function fetchMenuPlatillos(id_categoria) {
                     //Hacemos un JSON desde aquí con el ID del producto y los demas por predeterminado
                     const datosCarrito = {
                         Productos_Id_producto: item.Id_producto,
-                        Cantidad: 1, 
-                        Comentarios: '' 
+                        Comentarios: '', 
+                        Cantidad: 1
                     };
                     //Agregamos el platillo con el método agregarPlatilloCarrito
                     agregarPlatilloCarrito(datosCarrito);
@@ -121,7 +123,7 @@ function agregarPlatilloCarrito(datosPlatillo){
 
 function aumentarCarritoContador(){
     //Obtenemos todos los datos que hay en la tabla buffCarrito
-    fetch('http://localhost:3000/carrito')
+    fetch('http://192.168.1.75:3000/carrito')
                     .then(response => response.json())
                     .then(data => {
                         //Obtenemos la cantidad máxima que hay
@@ -131,31 +133,7 @@ function aumentarCarritoContador(){
                     });
 }
 
-function generarQr(){
-    // const requestData = {
-    //     qr_code_text: "https://www.qr-code-generator.com/"
-    //     // Otros datos que puedas necesitar enviar
-    // };
 
-    // const fetchOptions = {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(requestData)
-    // };
-    // fetch('http://localhost:3000/generar_qr', fetchOptions)
-    //     .then(response => response.text())
-    //     .then(data => {
-    //         document.getElementById('qr').innerHTML=data;
-    //         console.log(data);
-    //     })
-    //     .catch(error => {
-    //         console.error(error)
-    //     })
-
-    window.location.href = "mesas.html";
-}
 
 let posicion_Actual = -30;
 const Slider = document.getElementById('categorias_slider');

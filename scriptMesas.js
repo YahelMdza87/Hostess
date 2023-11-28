@@ -21,7 +21,7 @@ window.onload = function(){
 function mostrarMesas(area){
     const contenedorMesas = document.getElementById('contenedor_mesas');
     contenedorMesas.innerHTML='';
-    fetch(`http://localhost:3000/ver_mesas/${area}`)
+    fetch(`http://192.168.1.75:3000/ver_mesas/${area}`)
     .then(response => response.json())
     .then(mesas => {
         console.log(mesas);
@@ -30,9 +30,7 @@ function mostrarMesas(area){
         const contenedor = document.createElement('div');
         contenedor.classList.add('mesa_con_numero');
 
-        contenedor.addEventListener('click', function(){
-            window.location.href = "menuMesa.html?mesa=" + encodeURIComponent(mesa.Id_mesas);
-        });
+        
         const imagenMesa = document.createElement('img');
         
         // Maneja la Promesa aquí
@@ -46,13 +44,24 @@ function mostrarMesas(area){
                         }
 
                         imagenMesa.classList.add('mesa_menu_mesero');
-
+                        imagenMesa.addEventListener('click', function(){
+                            window.location.href = "menuMesa.html?mesa=" + encodeURIComponent(mesa.Id_mesas);
+                        });
+                        
                         const numero = document.createElement('h3');
                         numero.classList.add('numero_mesa');
                         numero.textContent = "Mesa " + mesa.Numero;
 
+                        const botonQR = document.createElement('h3');
+                        botonQR.innerHTML = "Generar QR";
+                        botonQR.classList.add('btnQr');
+                        botonQR.addEventListener('click', function(){
+                            generarQr(mesa.Id_mesas);
+                        });
+
                         contenedor.appendChild(imagenMesa);
                         contenedor.appendChild(numero);
+                        contenedor.appendChild(botonQR);
                         contenedorMesas.appendChild(contenedor);
                     })
                     .catch(error => {
@@ -67,7 +76,7 @@ function mostrarMesas(area){
 }
 
 function checarEstado(numMesa) {
-    return fetch(`http://localhost:3000/ver_comanda/${numMesa}`)
+    return fetch(`http://192.168.1.75:3000/ver_comanda/${numMesa}`)
         .then(response => response.json())
         .then(orden => {
             var estado = orden.length;
@@ -76,4 +85,30 @@ function checarEstado(numMesa) {
         .catch(error => {
             console.log(error);
         });
+}
+
+function generarQr(mesa){
+    const requestData = {
+        qr_code_text: "https://www.qr-code-generator.com/"
+        // Otros datos que puedas necesitar enviar
+    };
+
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    };
+    fetch(`http://192.168.1.75:3000/generar_qr/${mesa}`, fetchOptions)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('qr').innerHTML=data;
+            console.log(data);
+        })
+        .catch(error => {
+            console.error(error)
+        })
+
+    // window.location.href = "mesas.html";
 }

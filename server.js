@@ -72,6 +72,17 @@ app.get('/carrito', (req, res) => {
     });
 });
 
+app.get('/carritoOriginal', (req, res) => {
+    //Hacemos el query para seleccionar los registros de buffCarrito
+    const mostrarPlatillos = `SELECT * from buffCarrito`;
+    //Ejecutamos la petición
+    connection.query(mostrarPlatillos, (error, results, fields) => {
+        if (error) throw error;
+        //Guardamos los resultados en formato JSON y se lo mandamos scriptInedx.js
+        res.json(results);
+    });
+});
+
 
 //Eliminar un platillo del carrito
 app.delete('/eliminarPlatillo/:idPlatillo', (req, res) => {
@@ -79,6 +90,21 @@ app.delete('/eliminarPlatillo/:idPlatillo', (req, res) => {
 
     // Se elimina el platillo que queremos eliminar 
     connection.query('DELETE FROM buffCarrito WHERE Id_carrito = ?', [id_platillo], (error, results, fields) => {
+        if (error) {
+            console.error('Error al eliminar del carrito:', error);
+            res.status(500).send('Error interno del servidor');
+            return;
+        }
+
+        // Enviar una respuesta con los resultados (puedes personalizar según tus necesidades)
+        res.json({ mensaje: 'Eliminado del carrito exitosamente', resultados: results });
+    });
+});
+
+app.delete('/eliminarPlatillos', (req, res) => {
+
+    // Se elimina el platillo que queremos eliminar 
+    connection.query('DELETE FROM buffCarrito', (error, results, fields) => {
         if (error) {
             console.error('Error al eliminar del carrito:', error);
             res.status(500).send('Error interno del servidor');
@@ -161,12 +187,13 @@ app.put('/actualizarPlatillo', (req, res) => {
 //Esta api la agarre de una pagina y lo que hace es regresar un grafico SVG para crear un QR
 
 // Ruta para manejar la solicitud de generación de QR
-app.post('/generar_qr', async (req, res) => {
+app.post('/generar_qr/:numeroMesa', async (req, res) => {
+    const mesa = req.params.numeroMesa;
     try {
         // Datos del cuerpo de la solicitud
         const requestData = {
             frame_name: "no-frame",
-            qr_code_text: "http://192.168.56.1:3000",
+            qr_code_text: "http://192.168.1.75:3000/index.html?mesa="+mesa,
             image_format: "SVG",
             qr_code_logo: "scan-me-square"
         };
